@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/solidleafbg"
+    tools:context=".TellerPinjamanInquiryActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/Relative_Lauout_Header_TellerPinjaman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="#205A23"
+            android:padding="5dp">
+
+            <ImageButton
+                android:id="@+id/imageButtonBackInquiry_TellerPinjaman"
+                style="@android:style/Widget.Holo.Light.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="#205A23"
+                android:contentDescription="@string/back"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/abc_vector_test" />
+
+            <TextView
+                android:id="@+id/txtHeader_TellerPinjaman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/imageButtonNextInquiry_TellerPinjaman"
+                android:layout_toEndOf="@id/imageButtonBackInquiry_TellerPinjaman"
+                android:text="@string/TellerPinjaman"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imageButtonNextInquiry_TellerPinjaman"
+                style="@android:style/Widget.Holo.Light.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="#205A23"
+                android:contentDescription="@string/next"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@android:drawable/ic_menu_send" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/LinierLayout_Body_Main_TellerPinjaman"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/Relative_Lauout_Header_TellerPinjaman"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical|fill_vertical"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editTextKreditID_TellerPinjaman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginVertical="32dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:ems="10"
+                    android:hint="@string/input_kredit_id"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#212121"
+                    android:textSize="18sp"
+                    tools:ignore="VisualLintTextFieldSize"
+                    android:autofillHints="" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewID_TellerPinjaman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginRight="40sp"
+                    android:hint="@string/input_kredit_id1"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#212121"
+                    android:textSize="18sp"
+                    tools:ignore="VisualLintTextFieldSize,TouchTargetSizeCheck" />
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/imageButton_ScanBarcode_TellerPinjaman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/scanqr_60"
+                android:contentDescription="@string/scanqr"
+                app:srcCompat="@drawable/scanqr_60" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/solidleafbg"
+    tools:context=".PenarikanTunaiInquiryActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical|fill_vertical"
+            android:background="#205A23">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonBackInquiryPenarikanTunai"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/abc_vector_test"
+                        android:contentDescription="@string/back"
+                        app:srcCompat="@drawable/abc_vector_test"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtHeaderPenarikanTunai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:paddingLeft="5sp"
+                        android:paddingTop="5sp"
+                        android:paddingRight="5sp"
+                        android:paddingBottom="5sp"
+                        android:text="@string/Tarikan"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonNextInquiryPenarikanTunai"
+                        style="@android:style/Widget.Holo.Light.ImageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="10dp"
+                        android:background="#205A23"
+                        android:contentDescription="@string/next"
+                        app:srcCompat="@android:drawable/ic_menu_send"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editTextTabIDPenarikanTunai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="32dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:ems="10"
+                    android:hint="@string/InpurRekeningAsal"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#212121"
+                    android:textSize="18sp"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewIDPenarikanTunai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40sp"
+                    android:layout_marginRight="40sp"
+                    android:hint="@string/InpurRekeningAsal1"
+                    android:minHeight="48dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#212121"
+                    tools:ignore="VisualLintTextFieldSize" />
+
+                <ImageButton
+                    android:id="@+id/imageButton_ScanBarcode_Penarikan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/scanqr_60"
+                    android:contentDescription="@string/scanqr"
+                    app:srcCompat="@drawable/scanqr_60" />
+
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
