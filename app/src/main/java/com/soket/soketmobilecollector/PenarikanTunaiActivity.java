@@ -51,6 +51,8 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
 
     private String setText;
 
+    clsPreference currPreference = new clsPreference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,9 +86,6 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
 
         TextView txtInstitutionNameSetoranTunai =  findViewById(R.id.textViewinstitutionNamePenarikanTunai);
 
-        //cek apa keaddan login apa tidak
-        //for saved data
-        clsPreference currPreference = new clsPreference();
         currUser= currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
@@ -267,8 +266,21 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
                 postparams.put("hashCode", GeneratedHashCode);
 
                 sendPostForPostingTarikanTunai(urlAPI.concat("/tarikan") , postparams);
-
                 dialog.setProgress(40);
+
+                //nyatet last request buat di cek biar nda dobel
+                //String LastRequest = currPreference.getRecordedLastRequest(this);
+                //if (LastRequest.equals(postparams.toString()))
+                //{
+                //    //dobel
+                //    Toast.makeText(PenarikanTunaiActivity.this,"Doble Transaksi" , Toast.LENGTH_LONG).show();
+                //}
+                //else
+                //{
+                //    sendPostForPostingTarikanTunai(urlAPI.concat("/tarikan") , postparams);
+                //    dialog.setProgress(40);
+                //}
+
             }
             else
             {
@@ -276,6 +288,7 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
             }
 
         } catch (JSONException e) {
+            dialog.dismiss();
             Toast.makeText(PenarikanTunaiActivity.this,e.toString() , Toast.LENGTH_LONG).show();
         }
     }
@@ -347,7 +360,7 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
     private String formatedAmount(String amount)
     {
         //Locale localeID = new Locale("in", "ID");
-        if (amount.length()>0)
+        if (!amount.isEmpty())
         {
             NumberFormat formatRupiah = NumberFormat.getInstance();
             return formatRupiah.format( Double.parseDouble(amount));
@@ -377,7 +390,7 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
     private String setNominal(String currentNominal, String addWithValue)
     {
         String cleanString = currentNominal.replaceAll("[$,.]", "");
-        if (cleanString.length()<1) {cleanString="0";}
+        if (cleanString.isEmpty()) {cleanString="0";}
         double parsed = Double.parseDouble(cleanString) + Double.parseDouble(addWithValue);
 
         return formatedAmount_From_Double (parsed);

@@ -172,12 +172,12 @@ public class MutasiPinjamanActivity extends AppCompatActivity {
                                 {
                                     Mutation = Mutations.getJSONObject(k);
                                     MutasiPinjaman = new clsMutasiPinjaman();
-                                    MutasiPinjaman.setPRDNo(Mutation.getString("PRDNo"));
-                                    MutasiPinjaman.setTanggal(Mutation.getString("Tanggal"));
-                                    MutasiPinjaman.setAngsPokok(formatedAmount(Mutation.getString("AngsPokok")));
-                                    MutasiPinjaman.setAngsBunga(formatedAmount(Mutation.getString("AngsBunga")));
-                                    MutasiPinjaman.setDenda(formatedAmount(Mutation.getString("Denda")));
-                                    MutasiPinjaman.setSisaPinjaman(formatedAmount(Mutation.getString("SisaPinjaman")));
+                                    MutasiPinjaman.setPRDNo(Mutation.getString("prdNo"));
+                                    MutasiPinjaman.setTanggal(Mutation.getString("tanggal"));
+                                    MutasiPinjaman.setAngsPokok(formatedAmount(Mutation.getString("angsPokok")));
+                                    MutasiPinjaman.setAngsBunga(formatedAmount(Mutation.getString("angsBunga")));
+                                    MutasiPinjaman.setDenda(formatedAmount(Mutation.getString("denda")));
+                                    MutasiPinjaman.setSisaPinjaman(formatedAmount(Mutation.getString("sisaPinjaman")));
                                     arrMutasiPinjaman.add(MutasiPinjaman);
                                 }
                                 adMutasiPinjaman.notifyDataSetChanged();

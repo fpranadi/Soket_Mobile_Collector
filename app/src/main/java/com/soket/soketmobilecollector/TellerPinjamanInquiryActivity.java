@@ -221,22 +221,22 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
                             ResponseDescription = response.getString("responseDescription");
                             if (ResponseCode.equalsIgnoreCase("00")) {
                                 Intent intent = new Intent(TellerPinjamanInquiryActivity.this, TellerPinjamanActivity.class);
-                                intent.putExtra("KreditNo", response.getString("KreditNo"));
-                                intent.putExtra("Nama", response.getString("Nama"));
-                                intent.putExtra("PokokPinjaman", response.getDouble("PokokPinjaman"));
-                                intent.putExtra("Alamat", response.getString("Alamat"));
-                                intent.putExtra("Realisasi", response.getString("Realisasi"));
-                                intent.putExtra("JangkaWaktu", response.getInt("JangkaWaktu"));
-                                intent.putExtra("Jenis", response.getString("Jenis"));
-                                intent.putExtra("JatuhTempo", response.getString("JatuhTempo"));
-                                intent.putExtra("Angsuran", response.getDouble("Angsuran"));
-                                intent.putExtra("SisaPinjaman", response.getDouble("SisaPinjaman"));
-                                intent.putExtra("PRD", response.getInt("PRD"));
-                                intent.putExtra("Tgk", response.getInt("Tgk"));
-                                intent.putExtra("TgkDenda", response.getInt("TgkDenda"));
-                                intent.putExtra("TPokok", response.getDouble("TPokok"));
-                                intent.putExtra("TBunga", response.getDouble("TBunga"));
-                                intent.putExtra("Denda", response.getDouble("Denda"));
+                                intent.putExtra("KreditNo", response.getString("kreditNo"));
+                                intent.putExtra("Nama", response.getString("nama"));
+                                intent.putExtra("PokokPinjaman", response.getDouble("pokokPinjaman"));
+                                intent.putExtra("Alamat", response.getString("alamat"));
+                                intent.putExtra("Realisasi", response.getString("realisasi"));
+                                intent.putExtra("JangkaWaktu", response.getInt("jangkaWaktu"));
+                                intent.putExtra("Jenis", response.getString("jenis"));
+                                intent.putExtra("JatuhTempo", response.getString("jatuhTempo"));
+                                intent.putExtra("Angsuran", response.getDouble("angsuran"));
+                                intent.putExtra("SisaPinjaman", response.getDouble("sisaPinjaman"));
+                                intent.putExtra("PRD", response.getInt("pRD"));
+                                intent.putExtra("Tgk", response.getInt("tgk"));
+                                intent.putExtra("TgkDenda", response.getInt("tgkDenda"));
+                                intent.putExtra("TPokok", response.getDouble("tPokok"));
+                                intent.putExtra("TBunga", response.getDouble("tBunga"));
+                                intent.putExtra("Denda", response.getDouble("denda"));
                                 startActivity(intent);
                                 KreditID.setText("");
                                 KreditID1.setText("");
@@ -305,7 +305,7 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
                                 for (int k = 0; k < Accounts.length(); k++)
                                 {
                                     Account = Accounts.getJSONObject(k);
-                                    arrNasabah.add(Account.getString("KreditID").concat(" ").concat(Account.getString("Nama")));
+                                    arrNasabah.add(Account.getString("kreditID").concat(" ").concat(Account.getString("nama")));
                                 }
                                 adNasabah.notifyDataSetChanged();
                             } else {

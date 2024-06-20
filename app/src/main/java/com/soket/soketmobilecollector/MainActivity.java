@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
                                 for (int k = 0; k < Capems.length(); k++)
                                 {
                                     Capem = Capems.getJSONObject(k);
-                                    arrCapem.add(Capem.getString("CapemID"));
+                                    arrCapem.add(Capem.getString("capemID"));
                                 }
                                 adCapem.notifyDataSetChanged();
                                 capem.setSelection(((ArrayAdapter<String>)capem.getAdapter()).getPosition(savedCapemID));
@@ -364,7 +364,7 @@ public class MainActivity extends AppCompatActivity {
                                 for (int k = 0; k < Kolektors.length(); k++)
                                 {
                                     Kolektor = Kolektors.getJSONObject(k);
-                                    arrKolektor.add(Kolektor.getString("KolektorID"));
+                                    arrKolektor.add(Kolektor.getString("kolektorID"));
                                 }
                                 adKolektor.notifyDataSetChanged();
                                 kolektor.setSelection(((ArrayAdapter<String>)kolektor.getAdapter()).getPosition(savedKolektorID ));
@@ -433,20 +433,20 @@ public class MainActivity extends AppCompatActivity {
                                     logo.setImageResource(R.drawable.logolpd);
                                 }
 
-                                IsUsingSetoranTunai = Boolean.parseBoolean(response.getString("IsUsingSetoranTunai"));
-                                IsUsingPenarikanTunai = Boolean.parseBoolean(response.getString("IsUsingPenarikanTunai"));
-                                IsUsingMutasiSimpanan = Boolean.parseBoolean(response.getString("IsUsingMutasiSimpanan"));
-                                IsUsingMutasiPinjaman = Boolean.parseBoolean(response.getString("IsUsingMutasiPinjaman"));
-                                IsUsingMutasiSimpananBulanan = Boolean.parseBoolean(response.getString("IsUsingMutasiSimpananBulanan"));
-                                IsUsingMutasiSimpananBerjangka = Boolean.parseBoolean(response.getString("IsUsingMutasiSimpananBerjangka"));
-                                IsUsingTellerPinjaman = Boolean.parseBoolean(response.getString("IsUsingTellerPinjaman"));
+                                IsUsingSetoranTunai = Boolean.parseBoolean(response.getString("isUsingSetoranTunai"));
+                                IsUsingPenarikanTunai = Boolean.parseBoolean(response.getString("isUsingPenarikanTunai"));
+                                IsUsingMutasiSimpanan = Boolean.parseBoolean(response.getString("isUsingMutasiSimpanan"));
+                                IsUsingMutasiPinjaman = Boolean.parseBoolean(response.getString("isUsingMutasiPinjaman"));
+                                IsUsingMutasiSimpananBulanan = Boolean.parseBoolean(response.getString("isUsingMutasiSimpananBulanan"));
+                                IsUsingMutasiSimpananBerjangka = Boolean.parseBoolean(response.getString("isUsingMutasiSimpananBerjangka"));
+                                IsUsingTellerPinjaman = Boolean.parseBoolean(response.getString("isUsingTellerPinjaman"));
 
-                                IDMaskSimpanan= response.getString("IDMaskSimpanan");
-                                IDMaskPinjaman= response.getString("IDMaskPinjaman");
-                                IDMaskSimpananBulanan= response.getString("IDMaskSimpananBulanan");
-                                IDMaskSimpananBerjangka= response.getString("IDMaskSimpananBerjangka");
+                                IDMaskSimpanan= response.getString("idMaskSimpanan");
+                                IDMaskPinjaman= response.getString("idMaskPinjaman");
+                                IDMaskSimpananBulanan= response.getString("idMaskSimpananBulanan");
+                                IDMaskSimpananBerjangka= response.getString("idMaskSimpananBerjangka");
 
-                                IsUsingAutoCompleteID=Boolean.parseBoolean(response.getString("IsInputIDAutoComplete"));
+                                IsUsingAutoCompleteID=Boolean.parseBoolean(response.getString("isInputIDAutoComplete"));
 
                             }
                             else

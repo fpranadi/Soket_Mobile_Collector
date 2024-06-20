@@ -212,7 +212,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 for (int k = 0; k < Capems.length(); k++)
                                 {
                                     Capem = Capems.getJSONObject(k);
-                                    arrCapem.add(Capem.getString("CapemID"));
+                                    arrCapem.add(Capem.getString("capemID"));
                                 }
                                 adCapem.notifyDataSetChanged();
                                 if (savedCapemID.length()>0) {capem.setSelection(((ArrayAdapter<String>)capem.getAdapter()).getPosition(savedCapemID));}
@@ -277,7 +277,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 for (int k = 0; k < Kolektors.length(); k++)
                                 {
                                     Kolektor = Kolektors.getJSONObject(k);
-                                    arrKolektor.add(Kolektor.getString("KolektorID"));
+                                    arrKolektor.add(Kolektor.getString("kolektorID"));
                                 }
                                 adKolektor.notifyDataSetChanged();
                                 if (savedKolektorID.length()>0) {kolektor.setSelection(((ArrayAdapter<String>)kolektor.getAdapter()).getPosition(savedKolektorID ));}

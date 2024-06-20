@@ -55,22 +55,15 @@ public class MutasiPinjamanConfirmationMainActivity extends AppCompatActivity {
         KreditID =  findViewById(R.id.editTextNominalSetoranTunai);
         KreditID1=findViewById(R.id.autoCompleteTextViewMutasiPinjaman) ;
 
-        //cek apa keaddan login apa tidak
         //for saved data
         clsPreference currPreference = new clsPreference();
-        //private String currCapem;
-        //private String currKolektor;
-        //String currUser = currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
         TabIDMask= currPreference.getIDMaskPinjaman(this) ;
         KreditID.setFilters(new InputFilter[] {new InputFilter.LengthFilter(TabIDMask.length())});
 
-
         if (currLoggedInStatus)
         {
-            //currCapem = currPreference.getRegisteredCapem(this);
-            //currKolektor =currPreference.getRegisteredKolektor(this);f
             hashKey=getString(R.string.hashKey);
             urlAPI=getString(R.string.webService );
             institutionCode= currPreference.getRegisteredInstitutionCode(this);
@@ -192,11 +185,11 @@ public class MutasiPinjamanConfirmationMainActivity extends AppCompatActivity {
                                 {
                                     Account = Accounts.getJSONObject(0);
                                     Intent intent = new Intent(MutasiPinjamanConfirmationMainActivity.this, MutasiPinjamanActivity.class);
-                                    intent.putExtra("KREDITID", Account.getString("KreditID"));
-                                    intent.putExtra("NAMA", Account.getString("Nama"));
-                                    intent.putExtra("POKOK", Account.getString("PokokPinjaman"));
-                                    intent.putExtra("JT", Account.getString("JT"));
-                                    intent.putExtra("ANGSURAN", Account.getString("Angsuran"));
+                                    intent.putExtra("KREDITID", Account.getString("kreditID"));
+                                    intent.putExtra("NAMA", Account.getString("nama"));
+                                    intent.putExtra("POKOK", Account.getString("pokokPinjaman"));
+                                    intent.putExtra("JT", Account.getString("jt"));
+                                    intent.putExtra("ANGSURAN", Account.getString("angsuran"));
                                     startActivity(intent);
                                     KreditID.setText("");
                                 }
@@ -259,7 +252,7 @@ public class MutasiPinjamanConfirmationMainActivity extends AppCompatActivity {
                                 for (int k = 0; k < Accounts.length(); k++)
                                 {
                                     Account = Accounts.getJSONObject(k);
-                                    arrNasabah.add(Account.getString("KreditID").concat(" ").concat(Account.getString("Nama")));
+                                    arrNasabah.add(Account.getString("kreditID").concat(" ").concat(Account.getString("nama")));
                                 }
                                 adNasabah.notifyDataSetChanged();
                             } else {

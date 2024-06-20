@@ -168,13 +168,13 @@ public class MutasiDepositoActivity extends AppCompatActivity {
                                 {
                                     Mutation = Mutations.getJSONObject(k);
                                     MutasiSimpanan = new clsMutasiSimpanan();
-                                    MutasiSimpanan.setNoTransaksi(Mutation.getString("NoTransaksi"));
-                                    MutasiSimpanan.setTanggal(Mutation.getString("Tanggal"));
-                                    MutasiSimpanan.setTipeTransaksi(Mutation.getString("TipeTransaksi"));
-                                    MutasiSimpanan.setDebet(formatedAmount(Mutation.getString("Debet")));
-                                    MutasiSimpanan.setKredit(formatedAmount(Mutation.getString("Kredit")));
-                                    MutasiSimpanan.setSaldo(formatedAmount(Mutation.getString("Saldo")));
-                                    MutasiSimpanan.setUserID(Mutation.getString("UserID"));
+                                    MutasiSimpanan.setNoTransaksi(Mutation.getString("noTransaksi"));
+                                    MutasiSimpanan.setTanggal(Mutation.getString("tanggal"));
+                                    MutasiSimpanan.setTipeTransaksi(Mutation.getString("tipeTransaksi"));
+                                    MutasiSimpanan.setDebet(formatedAmount(Mutation.getString("debet")));
+                                    MutasiSimpanan.setKredit(formatedAmount(Mutation.getString("kredit")));
+                                    MutasiSimpanan.setSaldo(formatedAmount(Mutation.getString("saldo")));
+                                    MutasiSimpanan.setUserID(Mutation.getString("userID"));
                                     arrMutasiSimpanan.add(MutasiSimpanan);
                                 }
                                 adMutasiSimpanan.notifyDataSetChanged();

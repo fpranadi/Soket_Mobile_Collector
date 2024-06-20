@@ -239,11 +239,11 @@ public class PenarikanTunaiInquiryActivity extends AppCompatActivity {
                                 {
                                     Account = Accounts.getJSONObject(0);
                                     Intent intent = new Intent(PenarikanTunaiInquiryActivity.this, PenarikanTunaiActivity.class);
-                                    intent.putExtra("TABID", Account.getString("TabID"));
-                                    intent.putExtra("NAMA", Account.getString("Nama"));
-                                    intent.putExtra("SALDO", Account.getString("Saldo"));
-                                    intent.putExtra("ALAMAT", Account.getString("Alamat"));
-                                    intent.putExtra("LASTTRANS", Account.getString("LastTrans"));
+                                    intent.putExtra("TABID", Account.getString("tabID"));
+                                    intent.putExtra("NAMA", Account.getString("nama"));
+                                    intent.putExtra("SALDO", Account.getString("saldoTersedia"));
+                                    intent.putExtra("ALAMAT", Account.getString("alamat"));
+                                    intent.putExtra("LASTTRANS", Account.getString("lastTrans"));
                                     startActivity(intent);
                                     TabID.setText("");
                                     TabID1.setText("");
@@ -321,7 +321,7 @@ public class PenarikanTunaiInquiryActivity extends AppCompatActivity {
                                 for (int k = 0; k < Accounts.length(); k++)
                                 {
                                     Account = Accounts.getJSONObject(k);
-                                    arrNasabah.add(Account.getString("TabID").concat(" ").concat(Account.getString("Nama")));
+                                    arrNasabah.add(Account.getString("tabID").concat(" ").concat(Account.getString("nama")));
                                 }
                                 adNasabah.notifyDataSetChanged();
                             } else {

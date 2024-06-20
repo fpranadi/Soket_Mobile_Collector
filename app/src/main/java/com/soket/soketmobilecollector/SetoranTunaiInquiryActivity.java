@@ -206,9 +206,8 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
             postparams.put("InstitutionCode", institutionCode);
             postparams.put("jenis", "Tabungan");
             postparams.put("txtNorek", NoTabungan);
-            //clsGenerateSHA hash256 = new clsGenerateSHA();
             postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat("Tabungan").concat(NoTabungan).concat(hashKey),true));
-            sendPostForValidateTabID(urlAPI.concat("/inforekening") , postparams);
+            sendPostForValidateTabID(urlAPI.concat("/inforekeningNew") , postparams);
             dialog.setProgress(50);
         } catch (JSONException e) {
             Toast.makeText(SetoranTunaiInquiryActivity.this,e.toString() , Toast.LENGTH_LONG).show();
@@ -235,11 +234,11 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
                                 {
                                     Account = Accounts.getJSONObject(0);
                                     Intent intent = new Intent(SetoranTunaiInquiryActivity.this, SetoranTunaiActivity.class);
-                                    intent.putExtra("TABID", Account.getString("TabID"));
-                                    intent.putExtra("NAMA", Account.getString("Nama"));
-                                    intent.putExtra("SALDO", Account.getString("Saldo"));
-                                    intent.putExtra("ALAMAT", Account.getString("Alamat"));
-                                    intent.putExtra("LASTTRANS", Account.getString("LastTrans"));
+                                    intent.putExtra("TABID", Account.getString("tabID"));
+                                    intent.putExtra("NAMA", Account.getString("nama"));
+                                    intent.putExtra("SALDO", Account.getString("saldo"));
+                                    intent.putExtra("ALAMAT", Account.getString("alamat"));
+                                    intent.putExtra("LASTTRANS", Account.getString("lastTrans"));
                                     startActivity(intent);
                                     TabID.setText("");
                                     TabID1.setText("");
@@ -292,7 +291,6 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
             JSONObject postparams = new JSONObject();
             postparams.put("InstitutionCode", institutionCode);
             postparams.put("jenis", "Tabungan");
-            //clsGenerateSHA hash256 = new clsGenerateSHA();
             postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat("Tabungan").concat(hashKey),true));
             sendPostForGetNasabah(urlAPI.concat("/nasabahAll") , postparams);
         } catch (JSONException e) {
@@ -319,7 +317,7 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
                                 for (int k = 0; k < Accounts.length(); k++)
                                 {
                                     Account = Accounts.getJSONObject(k);
-                                    arrNasabah.add(Account.getString("TabID").concat(" ").concat(Account.getString("Nama")));
+                                    arrNasabah.add(Account.getString("tabID").concat(" ").concat(Account.getString("nama")));
                                 }
                                 adNasabah.notifyDataSetChanged();
                             } else {

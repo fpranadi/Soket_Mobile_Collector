@@ -184,10 +184,10 @@ public class MutasiDepositoConfirmationActivity extends AppCompatActivity {
                                 if (Accounts.length() > 0) {
                                     Account = Accounts.getJSONObject(0);
                                     Intent intent = new Intent(MutasiDepositoConfirmationActivity.this, MutasiDepositoActivity.class);
-                                    intent.putExtra("TABID", Account.getString("TabID"));
-                                    intent.putExtra("NAMA", Account.getString("Nama"));
-                                    intent.putExtra("TGLMASUK", Account.getString("TglMasuk"));
-                                    intent.putExtra("JW", Account.getString("JW"));
+                                    intent.putExtra("TABID", Account.getString("tabID"));
+                                    intent.putExtra("NAMA", Account.getString("nama"));
+                                    intent.putExtra("TGLMASUK", Account.getString("tglMasuk"));
+                                    intent.putExtra("JW", Account.getString("jw"));
                                     startActivity(intent);
                                     TabID.setText("");
                                 } else {
@@ -246,7 +246,7 @@ public class MutasiDepositoConfirmationActivity extends AppCompatActivity {
                                 JSONObject Account;
                                 for (int k = 0; k < Accounts.length(); k++) {
                                     Account = Accounts.getJSONObject(k);
-                                    arrNasabah.add(Account.getString("TabID").concat(" ").concat(Account.getString("Nama")));
+                                    arrNasabah.add(Account.getString("tabID").concat(" ").concat(Account.getString("nama")));
                                 }
                                 adNasabah.notifyDataSetChanged();
                             } else {

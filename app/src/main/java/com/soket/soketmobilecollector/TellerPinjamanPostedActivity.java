@@ -243,9 +243,9 @@ public class TellerPinjamanPostedActivity extends AppCompatActivity {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.setType("text/plain");
-            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "JURNAL TRANSAKSI - ".concat(InstitutionName_Debet) );
+            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "BUKTI KAS MASUK - ".concat(InstitutionName_Debet) );
 
-            String extraParams = "JURNAL TRANSAKSI - ".concat(InstitutionName_Debet).concat("\n");
+            String extraParams = "BUKTI KAS MASUK - ".concat(InstitutionName_Debet).concat("\n");
             for (int i=0;i<10 ;i++)
             {
                 extraParams = extraParams.concat(arrJurnalTransaksi.get(i).getItem()).concat(":\n");
@@ -431,7 +431,7 @@ public class TellerPinjamanPostedActivity extends AppCompatActivity {
             os1.write(blank.getBytes());
             os1.write(txtInstitutionName.getText().toString().concat("\n").getBytes() );
             os1.write(he1.getBytes());
-            os1.write("Jurnal Transaksi\n".getBytes());
+            os1.write("Bukti Kas Masuk\n".getBytes());
             os1.write(header1.getBytes());
             os1.write(textToPrint1.getBytes());
             os1.write(textToPrint2.getBytes());

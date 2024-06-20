@@ -126,15 +126,15 @@ public class LaporanTellerActivity extends AppCompatActivity {
                                 {
                                     Mutation = Mutations.getJSONObject(k);
                                     Mutasiteller = new clsMutasiTeller();
-                                    Mutasiteller.setTabID( Mutation.getString("TabID"));
-                                    Mutasiteller.setTipeTransaksi( Mutation.getString("Alias"));
-                                    Mutasiteller.setTanggal(Mutation.getString("Tanggal"));
-                                    Mutasiteller.setMutasi(formatedAmount(Mutation.getString("Saldo")));
-                                    Mutasiteller.setNama(Mutation.getString("Nama"));
-                                    Mutasiteller.setReference(Mutation.getString("Reference"));
-                                    Mutasiteller.setJenisTransaksi(Mutation.getString("JenisTransaksi"));
+                                    Mutasiteller.setTabID( Mutation.getString("tabID"));
+                                    Mutasiteller.setTipeTransaksi( Mutation.getString("alias"));
+                                    Mutasiteller.setTanggal(Mutation.getString("tanggal"));
+                                    Mutasiteller.setMutasi(formatedAmount(Mutation.getString("saldo")));
+                                    Mutasiteller.setNama(Mutation.getString("nama"));
+                                    Mutasiteller.setReference(Mutation.getString("reference"));
+                                    Mutasiteller.setJenisTransaksi(Mutation.getString("jenisTransaksi"));
                                     arrMutasiTeller.add(Mutasiteller);
-                                    TotalMutasi=TotalMutasi + Double.parseDouble(Mutation.getString("Saldo"));
+                                    TotalMutasi=TotalMutasi + Double.parseDouble(Mutation.getString("saldo"));
                                 }
                                 adMutasiTeller.notifyDataSetChanged();
                                 txtTotalMutation.setText(formatedAmount(String.valueOf(TotalMutasi)));

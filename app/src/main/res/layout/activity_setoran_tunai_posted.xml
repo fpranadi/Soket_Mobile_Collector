@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:gravity="center"
-                        android:text="@string/jurnaltransaksi"
+                        android:text="@string/BKM"
                         android:textAlignment="gravity"
                         android:textColor="#FFFFFF"
                         android:textSize="22sp"

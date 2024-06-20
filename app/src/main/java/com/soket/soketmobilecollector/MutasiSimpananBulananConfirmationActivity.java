@@ -193,10 +193,10 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
                                 {
                                     Account = Accounts.getJSONObject(0);
                                     Intent intent = new Intent(MutasiSimpananBulananConfirmationActivity.this, MutasiSimpananBulananActivity.class);
-                                    intent.putExtra("TABID", Account.getString("TabID"));
-                                    intent.putExtra("NAMA", Account.getString("Nama"));
-                                    intent.putExtra("TGLMASUK", Account.getString("TglMasuk"));
-                                    intent.putExtra("MASAKONTRAK", Account.getString("MasaKontrak"));
+                                    intent.putExtra("TABID", Account.getString("tabID"));
+                                    intent.putExtra("NAMA", Account.getString("nama"));
+                                    intent.putExtra("TGLMASUK", Account.getString("tglMasuk"));
+                                    intent.putExtra("MASAKONTRAK", Account.getString("masaKontrak"));
                                     startActivity(intent);
                                     TabID.setText("");
                                 }
@@ -260,7 +260,7 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
                                 for (int k = 0; k < Accounts.length(); k++)
                                 {
                                     Account = Accounts.getJSONObject(k);
-                                    arrNasabah.add(Account.getString("TabID").concat(" ").concat(Account.getString("Nama")));
+                                    arrNasabah.add(Account.getString("tabID").concat(" ").concat(Account.getString("nama")));
                                 }
                                 adNasabah.notifyDataSetChanged();
                             } else {

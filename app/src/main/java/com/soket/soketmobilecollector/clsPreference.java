@@ -26,12 +26,11 @@ public class clsPreference {
     static final String KEY_IDMASK_PINJAMAN="ID Mask Pinjaman";
     static final String KEY_IDMASK_SIMPANAN_BERJANGKA="ID Mask Simpanan Berjangka";
     static final String KEY_IDMASK_SIMPANAN_BULANAN="ID Mask Simpanan Bulanan";
-
     static final String KEY_USING_AUTOCOMPLETE_ID="Using Auto Complete ID";
-
     static final String KEY_BT_DEVICE_NAME="Nama Device Bluetooth";
     static final String KEY_BT_DEVICE_ADDRESS="Address Device Bluetooth";
     static final String KEY_BT_DEVICE_MAX_CHAR_PER_LINE="Max Karakter per Line Device Bluetooth";
+    static final String KEY_LAST_REQUEST="Request Terakhir";
 
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
@@ -193,5 +192,13 @@ public class clsPreference {
 
     public  int getBtDeviceMaxCharPerLine(Context context){
         return getSharedPreference(context).getInt(KEY_BT_DEVICE_MAX_CHAR_PER_LINE,32);
+    }
+    public  void setRecordedLastRequest(Context context, String Request){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_LAST_REQUEST,Request);
+        editor.apply();
+    }
+    public  String getRecordedLastRequest(Context context){
+        return getSharedPreference(context).getString(KEY_LAST_REQUEST,"");
     }
 }
