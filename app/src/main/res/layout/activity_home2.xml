@@ -19,11 +19,12 @@
             android:layout_weight="0.2">
 
             <TextView
+                android:id="@+id/txtInstitutionName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="@string/app_name_dashboard"
+                android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
@@ -38,13 +39,13 @@
             android:background="@color/myyellow">
 
             <TextView
-                android:id="@+id/txtInstitutionName"
+                android:id="@+id/txtInstitutionNameold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/courgette"
-                android:text="@string/app_name"
+                android:text="@string/app_name_dashboard"
                 android:textAlignment="center"
                 android:textColor="#286C25"
                 android:textSize="18sp"
@@ -84,10 +85,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/SetoranTunai"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
                         android:text="@string/Setoran"
                         android:textAlignment="center"
-                        android:textColor="#3E2723"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -110,9 +110,77 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/PenarikanTunai"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
                         android:text="@string/Tarikan"
-                        android:textColor="#000000"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/design_default_color_secondary_variant">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/mypurple">
+
+                    <ImageView
+                        android:id="@+id/TellerPinjaman_Main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/Keluar"
+                        android:src="@drawable/bayarangsuran60" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/TellerPinjaman_Main"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/TellerPinjaman"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/mygreen">
+
+                    <ImageView
+                        android:id="@+id/imageView_AngsuranKolektif"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/Keluar"
+                        android:src="@drawable/angsurankolektif40"
+                        app:srcCompat="@drawable/angsurankolektif40"
+                        tools:ignore="ImageContrastCheck" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageView_AngsuranKolektif"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/AngsuranKolektif"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </RelativeLayout>
             </LinearLayout>
@@ -136,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/mypurple">
+                    android:background="@color/myorange">
 
                     <ImageView
                         android:id="@+id/MutasiSimpanan"
@@ -151,17 +219,17 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/MutasiSimpanan"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
                         android:text="@string/MutasiSimpanan"
                         android:textAlignment="center"
-                        android:textColor="#000000"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@color/myblueshine">
 
                     <ImageView
                         android:id="@+id/MutasiSimpananBulanan"
@@ -176,7 +244,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/MutasiSimpananBulanan"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
                         android:text="@string/MutasiSimade"
                         android:textAlignment="center"
                         android:textColor="#FFFFFF"
@@ -202,7 +269,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/myblueshine">
+                    android:background="@color/mygreen">
 
                     <ImageView
                         android:id="@+id/MutasiSimpananBerjangka"
@@ -217,10 +284,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/MutasiSimpananBerjangka"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
                         android:text="@string/MutasiDeposito"
                         android:textAlignment="center"
-                        android:textColor="#3E2723"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="16sp" />
                 </RelativeLayout>
 
@@ -228,7 +294,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/myyellow1">
+                    android:background="@color/mypurple">
 
                     <ImageView
                         android:id="@+id/MutasiPinjaman"
@@ -243,16 +309,17 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/MutasiPinjaman"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
                         android:text="@string/MutasiPinjaman"
                         android:textAlignment="center"
-                        android:textColor="#212121"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </RelativeLayout>
             </LinearLayout>
 
 
         </TableRow>
+
+
 
         <TableRow
             android:layout_width="match_parent"
@@ -269,7 +336,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@color/myblueshine">
 
                     <ImageView
                         android:id="@+id/MutasiKolektor"
@@ -284,7 +352,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/MutasiKolektor"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
                         android:text="@string/MutasiTeller"
                         android:textAlignment="center"
                         android:textColor="#FFFFFF"
@@ -295,7 +362,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/mypurple">
+                    android:background="@color/myorange">
 
                     <TextView
                         android:id="@+id/textView_BT_Status"
@@ -326,7 +393,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/connect"
                         android:textAlignment="center"
-                        android:textColor="#000000"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </RelativeLayout>
             </LinearLayout>
@@ -334,48 +401,26 @@
 
         </TableRow>
 
+
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/design_default_color_secondary_variant">
+            android:background="@color/mygreen">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/myorange">
-
-                    <ImageView
-                        android:id="@+id/TellerPinjaman_Main"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:contentDescription="@string/Keluar"
-                        android:src="@drawable/bayarangsuran60" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/TellerPinjaman_Main"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/TellerPinjaman"
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:background="@color/myyellow1">
 
                     <ImageView
                         android:id="@+id/Keluar"
@@ -394,7 +439,7 @@
                         android:layout_centerHorizontal="true"
                         android:text="@string/Keluar"
                         android:textAlignment="center"
-                        android:textColor="#000000"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </RelativeLayout>
             </LinearLayout>

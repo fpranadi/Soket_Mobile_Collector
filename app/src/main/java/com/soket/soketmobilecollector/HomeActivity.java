@@ -37,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
     private boolean IsUsingMutasiSimpananBulanan;
     private boolean IsUsingMutasiSimpananBerjangka;
     private boolean IsUsingTellerPinjaman;
+    private boolean IsUsingAngsuranKolektif;
 
     //for saved data
     private clsPreference currPreference;
@@ -72,6 +73,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
         ImageView btnTellerPinjaman = findViewById(R.id.TellerPinjaman_Main);
         TextView txtinstitutionName = findViewById(R.id.txtInstitutionName);
         ImageView btnBtConnect = findViewById(R.id.Bluetooth_Connect);
+        ImageView btnAngsuranKolektif = findViewById(R.id.imageView_AngsuranKolektif);
         stat = findViewById(R.id.textView_BT_Status);
         mScan = findViewById(R.id.textView_BT_Scan);
 
@@ -89,6 +91,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
             IsUsingTellerPinjaman = currPreference.getIsUsingTellerPinjaman(this);
             txtinstitutionName.setText(currPreference.getRegisteredInstitutionName(this));
             printerNbrCharacterPerLine = currPreference.getBtDeviceMaxCharPerLine(this);
+            IsUsingAngsuranKolektif = currPreference.getIsUsingAngsuranKolektif(this);
         } else {
             currPreference.clearLoggedInUser(this);
             finish();
@@ -167,6 +170,15 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
             }
         });
 
+        btnAngsuranKolektif.setOnClickListener(view -> {
+            if (IsUsingAngsuranKolektif) {
+                Intent intent = new Intent(HomeActivity.this, AngsuranKolektifInquiryActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(HomeActivity.this, "Not Available", Toast.LENGTH_LONG).show();
+            }
+        });
+
         btnBtConnect.setOnClickListener(mView -> {
             if (mScan.getText().toString().equalsIgnoreCase("Connect")) {
                 mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -224,7 +236,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
         }
         try {
             Set<BluetoothDevice> mPairedDevices = mBluetoothAdapter.getBondedDevices();
-            if (mPairedDevices.size() > 0) {
+            if (!mPairedDevices.isEmpty()) {
                 for (BluetoothDevice mDevice : mPairedDevices) {
                     Log.v(TAG, "PairedDevices: " + mDevice.getName() + "  " + mDevice.getAddress());
                 }

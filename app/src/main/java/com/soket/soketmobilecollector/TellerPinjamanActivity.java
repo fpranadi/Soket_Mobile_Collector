@@ -451,7 +451,7 @@ public class TellerPinjamanActivity extends AppCompatActivity {
                             }
                             dialog.setProgress(100);
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(TellerPinjamanActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                             dialog.setProgress(100);
                         }

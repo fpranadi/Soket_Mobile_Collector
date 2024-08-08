@@ -273,7 +273,7 @@ public class SetoranTunaiPostedActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(SetoranTunaiPostedActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -346,7 +346,7 @@ public class SetoranTunaiPostedActivity extends AppCompatActivity {
                                 Toast.makeText(SetoranTunaiPostedActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(SetoranTunaiPostedActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -369,7 +369,7 @@ public class SetoranTunaiPostedActivity extends AppCompatActivity {
     private String formatedAmount(String amount)
     {
         //Locale localeID = new Locale("in", "ID");
-        if (amount.length()>0)
+        if (!amount.isEmpty())
         {
             NumberFormat formatRupiah = NumberFormat.getInstance();
             return formatRupiah.format( Double.parseDouble(amount));

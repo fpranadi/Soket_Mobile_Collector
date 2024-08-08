@@ -270,7 +270,7 @@ public class PenarikanTunaiPostedActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(PenarikanTunaiPostedActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -344,7 +344,7 @@ public class PenarikanTunaiPostedActivity extends AppCompatActivity {
                                 Toast.makeText(PenarikanTunaiPostedActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(PenarikanTunaiPostedActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -367,7 +367,7 @@ public class PenarikanTunaiPostedActivity extends AppCompatActivity {
     private String formatedAmount(String amount)
     {
         //Locale localeID = new Locale("in", "ID");
-        if (amount.length()>0)
+        if (!amount.isEmpty())
         {
             NumberFormat formatRupiah = NumberFormat.getInstance();
             return formatRupiah.format( Double.parseDouble(amount));

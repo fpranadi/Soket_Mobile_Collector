@@ -47,6 +47,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AngsuranKolektifPostedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AngsuranKolektifInquiryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AngsuranKolektifActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InquiryAngsuranKolektifActivity"
+            android:exported="false" />
+        <activity
             android:name=".TellerPinjamanPostedActivity"
             android:exported="false" />
         <activity

@@ -73,4 +73,14 @@
     <string name="Denda">Denda</string>
     <string name="TotalTunggakan">Total : </string>
     <string name="SisaPinjaman">Sisa Pinjaman: </string>
+    <string name="AngsuranKolektif">Angsuran Kolektif</string>
+    <string name="PilihAutoDebet">Pilih Angsuran Kolektif</string>
+    <string name="DaftarAutoDebet">Daftar Auto Debet</string>
+    <string name="rekening_tujuan">Rekening Tujuan</string>
+    <string name="input_no_rek_tujuan">Input No Rekening Tujuan</string>
+    <string name="RekeningAsal">Rekening Asal</string>
+    <string name="AutoDebetID">Auto Debet ID</string>
+    <string name="Angsuran1">Angsuran</string>
+    <string name="JumlahBayar">Jumlah Bayar</string>
+    <string name="InputNominal">Input Nominal</string>
 </resources>

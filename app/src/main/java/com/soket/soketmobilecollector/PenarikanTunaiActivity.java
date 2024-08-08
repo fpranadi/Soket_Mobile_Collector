@@ -321,7 +321,7 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
                             }
                             dialog.setProgress(100);
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(PenarikanTunaiActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                             dialog.setProgress(100);
                         }

@@ -328,7 +328,7 @@ public class PenarikanTunaiInquiryActivity extends AppCompatActivity {
                                 Toast.makeText(PenarikanTunaiInquiryActivity.this,ResponseDescription, Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(PenarikanTunaiInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },

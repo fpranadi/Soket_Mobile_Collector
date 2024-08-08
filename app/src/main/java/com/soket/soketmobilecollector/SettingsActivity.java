@@ -222,7 +222,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 Toast.makeText(SettingsActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(SettingsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -253,7 +253,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(SettingsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -280,14 +280,14 @@ public class SettingsActivity extends AppCompatActivity {
                                     arrKolektor.add(Kolektor.getString("kolektorID"));
                                 }
                                 adKolektor.notifyDataSetChanged();
-                                if (savedKolektorID.length()>0) {kolektor.setSelection(((ArrayAdapter<String>)kolektor.getAdapter()).getPosition(savedKolektorID ));}
+                                if (!savedKolektorID.isEmpty()) {kolektor.setSelection(((ArrayAdapter<String>)kolektor.getAdapter()).getPosition(savedKolektorID ));}
                             }
                             else
                             {
                                 Toast.makeText(SettingsActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(SettingsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },

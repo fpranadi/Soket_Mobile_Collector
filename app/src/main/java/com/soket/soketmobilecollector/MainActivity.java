@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean IsUsingMutasiSimpananBulanan;
     private Boolean IsUsingMutasiSimpananBerjangka;
     private Boolean IsUsingTellerPinjaman;
+    private Boolean IsUsingAngsuranKolektif;
 
     public Boolean IsUsingAutoCompleteID;
 
@@ -219,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                                 userName.setText("");
                                 userPassword.setText("");
 
-                                savedData.setIsUsing(MainActivity.this,IsUsingSetoranTunai, IsUsingPenarikanTunai, IsUsingMutasiSimpanan, IsUsingMutasiPinjaman, IsUsingMutasiSimpananBulanan, IsUsingMutasiSimpananBerjangka, IsUsingTellerPinjaman);
+                                savedData.setIsUsing(MainActivity.this,IsUsingSetoranTunai, IsUsingPenarikanTunai, IsUsingMutasiSimpanan, IsUsingMutasiPinjaman, IsUsingMutasiSimpananBulanan, IsUsingMutasiSimpananBerjangka, IsUsingTellerPinjaman, IsUsingAngsuranKolektif);
                                 savedData.setIDMask(MainActivity.this,IDMaskSimpanan, IDMaskPinjaman, IDMaskSimpananBulanan,IDMaskSimpananBerjangka );
                                 savedData.setIsUsingAutoCompleteID(MainActivity.this,IsUsingAutoCompleteID);
 
@@ -239,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             savedData.clearLoggedInUser(MainActivity.this);
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -274,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -309,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -340,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -374,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -404,7 +405,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -440,6 +441,7 @@ public class MainActivity extends AppCompatActivity {
                                 IsUsingMutasiSimpananBulanan = Boolean.parseBoolean(response.getString("isUsingMutasiSimpananBulanan"));
                                 IsUsingMutasiSimpananBerjangka = Boolean.parseBoolean(response.getString("isUsingMutasiSimpananBerjangka"));
                                 IsUsingTellerPinjaman = Boolean.parseBoolean(response.getString("isUsingTellerPinjaman"));
+                                IsUsingAngsuranKolektif = Boolean.parseBoolean(response.getString("isUsingAngsuranKolektif"));
 
                                 IDMaskSimpanan= response.getString("idMaskSimpanan");
                                 IDMaskPinjaman= response.getString("idMaskPinjaman");
@@ -457,7 +459,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             savedData.setRegisteredInstitution(MainActivity.this,institutionCode, institutionName.getText().toString() );
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             if (!institutionCode.equals("000000"))
                             {
                                 Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();

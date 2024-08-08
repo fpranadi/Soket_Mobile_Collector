@@ -32,6 +32,8 @@ public class clsPreference {
     static final String KEY_BT_DEVICE_MAX_CHAR_PER_LINE="Max Karakter per Line Device Bluetooth";
     static final String KEY_LAST_REQUEST="Request Terakhir";
 
+    static final String KEY_USING_ANGSURANKOLEKTIF="Using Angsuran Kolektif";
+
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -107,7 +109,7 @@ public class clsPreference {
         editor.apply();
     }
 
-    public  void setIsUsing(Context context, boolean isUsingSetoran, boolean isUsingPenarikan, boolean isUsingMutasiTab, boolean isUsingMutasiKredit, boolean isUsingMutasiSiBulan, boolean isUsingMutasiDep, boolean isUsingTellerPinjaman){
+    public  void setIsUsing(Context context, boolean isUsingSetoran, boolean isUsingPenarikan, boolean isUsingMutasiTab, boolean isUsingMutasiKredit, boolean isUsingMutasiSiBulan, boolean isUsingMutasiDep, boolean isUsingTellerPinjaman, boolean isUsingAngsuranKolektif){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.putBoolean(KEY_USING_MUTASI_SIMPANAN,isUsingMutasiTab);
         editor.putBoolean(KEY_USING_MUTASI_PINJAMAN,isUsingMutasiKredit);
@@ -116,6 +118,7 @@ public class clsPreference {
         editor.putBoolean(KEY_USING_SETORAN_TUNAI,isUsingSetoran);
         editor.putBoolean(KEY_USING_PENARIKAN_TUNAI,isUsingPenarikan);
         editor.putBoolean(KEY_USING_TELLER_PINJAMAN,isUsingTellerPinjaman);
+        editor.putBoolean(KEY_USING_ANGSURANKOLEKTIF, isUsingAngsuranKolektif);
         editor.apply();
     }
 
@@ -140,6 +143,10 @@ public class clsPreference {
 
     public  boolean getIsUsingTellerPinjaman(Context context){
         return getSharedPreference(context).getBoolean(KEY_USING_TELLER_PINJAMAN,true);
+    }
+
+    public  boolean getIsUsingAngsuranKolektif(Context context){
+        return getSharedPreference(context).getBoolean(KEY_USING_ANGSURANKOLEKTIF,false);
     }
 
     public  void setIDMask(Context context, String IDMaskSimpanan, String IDMaskPinjaman, String IDMaskSimpananBulanan, String IDMaskSimpananBerjangka){
