@@ -4,12 +4,9 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,7 +25,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,14 +39,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 public class AngsuranKolektifActivity extends AppCompatActivity {
 
     private TextView TabID;
-    private TextView txtNama;
-    private TextView txtSaldo;
-    private TextView txtLastTrans;
 
     private String institutionCode;
     private String hashKey;
@@ -64,10 +56,9 @@ public class AngsuranKolektifActivity extends AppCompatActivity {
     public static AngsuranKolektifActivity  angsuranKolektifActivity;
 
     private ProgressDialog dialog;
-
     private String setText;
 
-    clsPreference currPreference = new clsPreference();
+    clsPreference currPreference ;
 
     private ArrayList<String> arrKodeAutoDebet ;
     private ArrayAdapter<String> adKodeAutoDebet;
@@ -101,14 +92,13 @@ public class AngsuranKolektifActivity extends AppCompatActivity {
         //for killed from ouside
         angsuranKolektifActivity = this;
 
-        //TextView headerSetoranTunai =  findViewById(R.id.txtHeaderAngsuranKolektifPosting);
         ImageButton btnBack =  findViewById(R.id.imageButtonBackAngsuranKolektifPosting);
         ImageButton btnNext =  findViewById(R.id.imageButtonNextAngsuranKolektifPosting);
 
         TabID =  findViewById(R.id.textViewTabIDAngsuranKolektifPosting);
-        txtNama = findViewById(R.id.textViewNamadiAngsuranKolektifPosting) ;
-        txtSaldo = findViewById(R.id.textViewSaldodiAngsuranKolektifPosting) ;
-        txtLastTrans = findViewById(R.id.textViewAlamatdiAngsuranKolektifPosting) ;
+        TextView txtNama = findViewById(R.id.textViewNamadiAngsuranKolektifPosting);
+        TextView txtSaldo = findViewById(R.id.textViewSaldodiAngsuranKolektifPosting);
+        TextView txtLastTrans = findViewById(R.id.textViewAlamatdiAngsuranKolektifPosting);
         ImageView logo =  findViewById(R.id.imageViewAngsuranKolektifPosting);
 
         TextView txtInstitutionNameSetoranTunai =  findViewById(R.id.textViewinstitutionNameAngsuranKolektifPosting);
@@ -122,6 +112,7 @@ public class AngsuranKolektifActivity extends AppCompatActivity {
         ImageButton addAmount = findViewById(R.id.imageButtonAddAmount_AngsuranKolektifPosting);
         ImageButton minAmount = findViewById(R.id.imageButtonSubstractAmount_AngsuranKolektifPosting);
 
+        currPreference = new clsPreference();
         currUser= currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
@@ -216,8 +207,6 @@ public class AngsuranKolektifActivity extends AppCompatActivity {
             }
             amount.setText(formatedAmount(amountD));
         });
-
-
 
         kodeAutoDebet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

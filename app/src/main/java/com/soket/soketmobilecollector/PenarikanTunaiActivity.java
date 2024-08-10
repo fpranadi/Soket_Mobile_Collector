@@ -51,7 +51,7 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
 
     private String setText;
 
-    clsPreference currPreference = new clsPreference();
+    clsPreference currPreference ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,7 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
 
         TextView txtInstitutionNameSetoranTunai =  findViewById(R.id.textViewinstitutionNamePenarikanTunai);
 
+        currPreference = new clsPreference();
         currUser= currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
