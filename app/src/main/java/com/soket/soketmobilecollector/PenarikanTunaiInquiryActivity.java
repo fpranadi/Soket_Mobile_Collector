@@ -232,7 +232,7 @@ public class PenarikanTunaiInquiryActivity extends AppCompatActivity {
                             ResponseDescription = response.getString("responseDescription");
                             if (ResponseCode.equalsIgnoreCase("00")) {
 
-                                // Getting JSON Array node
+                                // Getting JSON Array nodefp
                                 JSONArray Accounts = response.getJSONArray("hasil");
                                 JSONObject Account;
                                 if (Accounts.length()> 0)
