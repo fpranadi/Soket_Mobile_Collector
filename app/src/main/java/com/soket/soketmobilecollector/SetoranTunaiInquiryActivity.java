@@ -324,7 +324,7 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
                                 Toast.makeText(SetoranTunaiInquiryActivity.this,ResponseDescription, Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(SetoranTunaiInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
