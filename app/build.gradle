@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.soket.soketmobilecollector"
         minSdkVersion 24
-        targetSdk 34
+        targetSdk 35
         versionCode 31
         versionName '31'
 
