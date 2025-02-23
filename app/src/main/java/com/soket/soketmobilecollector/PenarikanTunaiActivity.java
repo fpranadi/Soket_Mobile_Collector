@@ -338,6 +338,8 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(PenarikanTunaiActivity.this)));
+
                     return headers;
                 }
             };

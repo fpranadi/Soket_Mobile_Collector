@@ -57,6 +57,8 @@ public class AngsuranKolektifInquiryActivity extends AppCompatActivity {
 
     private String NoTabungan;
 
+    private  clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,7 @@ public class AngsuranKolektifInquiryActivity extends AppCompatActivity {
         TabID1=findViewById(R.id.autoCompleteTextViewIDAngsuranKolektif) ;
         ImageButton btnScanBarcode =  findViewById(R.id.imageButton_ScanBarcode_AngsuranKolektif);
 
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
         TabIDMask = currPreference.getIDMaskSimpanan(this);
@@ -212,7 +214,7 @@ public class AngsuranKolektifInquiryActivity extends AppCompatActivity {
             postparams.put("txtNorek", NoTabungan);
             postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat("tabungan_listedautodebet").concat(NoTabungan).concat(hashKey),true));
             sendPostForValidateTabID(urlAPI.concat("/inforekening") , postparams);
-            dialog.setProgress(50);
+            //dialog.setProgress(50);
         } catch (JSONException e) {
             Toast.makeText(AngsuranKolektifInquiryActivity.this,e.toString() , Toast.LENGTH_LONG).show();
         }
@@ -255,10 +257,10 @@ public class AngsuranKolektifInquiryActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(AngsuranKolektifInquiryActivity.this,ResponseDescription, Toast.LENGTH_LONG).show();
                             }
-                            dialog.setProgress(100);
+                            //dialog.setProgress(100);
                         } catch (JSONException e) {
                             //e.printStackTrace();
-                            dialog.setProgress(100);
+                            //dialog.setProgress(100);
                             Toast.makeText(AngsuranKolektifInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                         dialog.dismiss();
@@ -273,6 +275,8 @@ public class AngsuranKolektifInquiryActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(AngsuranKolektifInquiryActivity.this)));
+
                     return headers;
                 }
             };
@@ -337,6 +341,7 @@ public class AngsuranKolektifInquiryActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(AngsuranKolektifInquiryActivity.this)));
                     return headers;
                 }
             };

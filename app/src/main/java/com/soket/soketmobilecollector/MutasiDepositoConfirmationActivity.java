@@ -44,6 +44,8 @@ public class MutasiDepositoConfirmationActivity extends AppCompatActivity {
     private ArrayAdapter<String> adNasabah;
     private boolean IsUsingAutoCompleteID_Deposito;
 
+    private  clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,7 @@ public class MutasiDepositoConfirmationActivity extends AppCompatActivity {
 
         //cek apa keaddan login apa tidak
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
 
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
@@ -207,6 +209,8 @@ public class MutasiDepositoConfirmationActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiDepositoConfirmationActivity.this)));
+
                     return headers;
                 }
             };
@@ -263,6 +267,8 @@ public class MutasiDepositoConfirmationActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiDepositoConfirmationActivity.this)));
+
                     return headers;
                 }
             };

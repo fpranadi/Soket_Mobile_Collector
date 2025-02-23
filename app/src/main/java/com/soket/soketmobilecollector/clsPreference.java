@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 public class clsPreference {
     /** Pendeklarasian key-data berupa String, untuk sebagai wadah penyimpanan data.
      * Jadi setiap data mempunyai key yang berbeda satu sama lain */
+    static final String KEY_USERNAME_REGISTERED = "Username_TerAktivasi";
+
     static final String KEY_USERNAME_SEDANG_LOGIN = "Username_logged_in";
     static final String KEY_STATUS_SEDANG_LOGIN = "Status_logged_in";
     static final String KEY_KOLEKTOR_ID = "Kode Kolektor";
@@ -34,6 +36,8 @@ public class clsPreference {
 
     static final String KEY_USING_ANGSURANKOLEKTIF="Using Angsuran Kolektif";
 
+    static final String ACCESS_TOKEN = "TOKEN AUTHORIZATION BEAERER";
+
     /** Pendlakarasian Shared Preferences yang berdasarkan paramater context */
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -48,7 +52,7 @@ public class clsPreference {
     }
     /** Mengembalikan nilai dari key KEY_KOLEKTOR_ID berupa String */
     public  String getRegisteredInstitutionCode(Context context){
-        return getSharedPreference(context).getString(KEY_INSTITUTION_CODE,"000000");
+        return getSharedPreference(context).getString(KEY_INSTITUTION_CODE,"989000");
     }
     /** Mengembalikan nilai dari key KEY_KOLEKTOR_ID berupa String */
     public  String getRegisteredInstitutionName(Context context){
@@ -62,7 +66,7 @@ public class clsPreference {
     }
     /** Mengembalikan nilai dari key KEY_KOLEKTOR_ID berupa String */
     public  String getRegisteredCapem(Context context){
-        return getSharedPreference(context).getString(KEY_CAPEM_ID,"");
+        return getSharedPreference(context).getString(KEY_CAPEM_ID,"KANTOR");
     }
 
     //Kolektor=========================
@@ -73,19 +77,37 @@ public class clsPreference {
     }
     /** Mengembalikan nilai dari key KEY_KOLEKTOR_ID berupa String */
     public  String getRegisteredKolektor(Context context){
-        return getSharedPreference(context).getString(KEY_KOLEKTOR_ID,"");
+        return getSharedPreference(context).getString(KEY_KOLEKTOR_ID,"FP");
     }
 
     /** Deklarasi Edit Preferences dan mengubah data
      *  yang memiliki key KEY_USERNAME_SEDANG_LOGIN dengan parameter username */
-    public  void setLoggedInUser(Context context, String username){
+    public  void setLoggedInUser(Context context, String username, String accessToken ){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.putString(KEY_USERNAME_SEDANG_LOGIN, username);
+        editor.putString(ACCESS_TOKEN, accessToken);
+
         editor.apply();
     }
     /** Mengembalikan nilai dari key KEY_USERNAME_SEDANG_LOGIN berupa String */
     public  String getLoggedInUser(Context context){
         return getSharedPreference(context).getString(KEY_USERNAME_SEDANG_LOGIN,"");
+    }
+
+    public String getAccessToken(Context context)
+    {
+        return  getSharedPreference(context).getString(ACCESS_TOKEN, "");
+    }
+
+    public  void setRegisteredUser(Context context, String username ){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(KEY_USERNAME_REGISTERED, username);
+        editor.apply();
+    }
+
+    public String getRegisteredUser(Context context)
+    {
+        return  getSharedPreference(context).getString(KEY_USERNAME_REGISTERED, "fpranadi");
     }
 
     /** Deklarasi Edit Preferences dan mengubah data
@@ -106,6 +128,7 @@ public class clsPreference {
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         editor.remove(KEY_USERNAME_SEDANG_LOGIN);
         editor.remove(KEY_STATUS_SEDANG_LOGIN);
+        editor.remove(ACCESS_TOKEN);
         editor.apply();
     }
 

@@ -52,6 +52,8 @@ public class SetoranTunaiActivity extends AppCompatActivity {
 
     private String setText;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +90,7 @@ public class SetoranTunaiActivity extends AppCompatActivity {
         TextView txtInstitutionNameSetoranTunai =  findViewById(R.id.textViewinstitutionNameSetoranTunai);
 
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         currUser= currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
@@ -334,6 +336,8 @@ public class SetoranTunaiActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(SetoranTunaiActivity.this)));
+
                     return headers;
                 }
             };

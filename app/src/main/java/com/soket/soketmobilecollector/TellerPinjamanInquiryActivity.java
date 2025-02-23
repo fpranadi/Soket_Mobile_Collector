@@ -52,6 +52,8 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
 
     private String NoPinjaman;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
         ImageButton btnScanBarcode =  findViewById(R.id.imageButton_ScanBarcode_TellerPinjaman);
 
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
         KreditIDMask= currPreference.getIDMaskPinjaman(this);
@@ -261,6 +263,8 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(TellerPinjamanInquiryActivity.this)));
+
                     return headers;
                 }
             };
@@ -323,6 +327,7 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(TellerPinjamanInquiryActivity.this)));
                     return headers;
                 }
             };

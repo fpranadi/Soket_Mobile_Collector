@@ -37,6 +37,8 @@ public class MutasiDepositoActivity extends AppCompatActivity {
     private ArrayList<clsMutasiSimpanan> arrMutasiSimpanan  ;
     private clsMutasiSimpanan MutasiSimpanan;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +91,7 @@ public class MutasiDepositoActivity extends AppCompatActivity {
 
         //cek apa keaddan login apa tidak
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         //String currUser = currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
@@ -195,6 +197,8 @@ public class MutasiDepositoActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiDepositoActivity.this)));
+
                     return headers;
                 }
             };

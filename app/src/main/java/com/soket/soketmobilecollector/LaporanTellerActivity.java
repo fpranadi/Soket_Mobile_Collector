@@ -39,6 +39,7 @@ public class LaporanTellerActivity extends AppCompatActivity {
     private ArrayList<clsMutasiTeller> arrMutasiTeller;
     private clsMutasiTeller Mutasiteller;
     private double TotalMutasi;
+    private  clsPreference currPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class LaporanTellerActivity extends AppCompatActivity {
 
         //cek apa keaddan login apa tidak
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         currUser= currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
@@ -99,7 +100,7 @@ public class LaporanTellerActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(LaporanTellerActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -144,7 +145,7 @@ public class LaporanTellerActivity extends AppCompatActivity {
                                 Toast.makeText(LaporanTellerActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(LaporanTellerActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -155,6 +156,8 @@ public class LaporanTellerActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(LaporanTellerActivity.this)));
+
                     return headers;
                 }
             };

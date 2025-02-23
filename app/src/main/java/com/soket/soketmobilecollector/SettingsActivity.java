@@ -1,6 +1,7 @@
 package com.soket.soketmobilecollector;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -49,6 +50,8 @@ public class SettingsActivity extends AppCompatActivity {
     private String savedCapemID;
     private String savedKolektorID ;
 
+    private EditText userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         capem= findViewById(R.id.spCapem);
         kolektor= findViewById(R.id.spKolektor);
         e_intitutionCode=findViewById(R.id.editTextInstitutionCode);
+        userName = findViewById(R.id.editTextUserYangAkanLogin);
         TextInputEditText bt_Address = findViewById(R.id.txtBTAddress);
         TextInputEditText bt_Name = findViewById(R.id.txtBTName);
         Button testPrint = findViewById(R.id.btnTestPrint);
@@ -75,6 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
         e_intitutionCode.setText(institutionCode) ;
         bt_Name.setText(savedData.getBtDeviceName(this));
         bt_Address.setText(savedData.getBtDeviceAddress(this));
+        userName.setText(savedData.getRegisteredUser(this));
 
         //isi spiner kolektor
         arrKolektor = new ArrayList<>();
@@ -113,6 +118,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 if (isCapemOk && isKolektorOk)
                 {
+                    saveIMEI();
                     savedData.clearLoggedInUser(SettingsActivity.this );
                     Toast.makeText(SettingsActivity.this, "Konfigurasi berhasil Tersimpan, buka kembali Aplikasi ini ...!!!", Toast.LENGTH_LONG).show();
                     finish();
@@ -187,7 +193,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
         catch (JSONException e)
         {
-            e.printStackTrace();
+            //e.printStackTrace();
             Toast.makeText(SettingsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -233,6 +239,7 @@ public class SettingsActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(SettingsActivity.this)));
                     return headers;
                 }
             };
@@ -298,6 +305,8 @@ public class SettingsActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(SettingsActivity.this)));
+
                     return headers;
                 }
             };
@@ -305,5 +314,66 @@ public class SettingsActivity extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(SettingsActivity.this,e.toString() , Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void saveIMEI()
+    {
+        try {
+            JSONObject Params = new JSONObject();
+            Params.put("institutionCode", institutionCode);
+            Params.put("userName", userName.getText().toString());
+            Params.put("referenceId", getAndroidId());
+            Params.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat(userName.getText().toString()).concat(getAndroidId()).concat(hashKey),true));
+            sendPostForSaveIMEI(urlAPI.concat("/saveuseryangakanlogin") , Params);
+        }
+        catch (JSONException e)
+        {
+            //e.printStackTrace();
+            Toast.makeText(SettingsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void sendPostForSaveIMEI(String url, JSONObject JSONBodyParam)  {
+        try{
+            RequestQueue requestQueue= Volley.newRequestQueue(this);
+            JsonObjectRequest objectRequest=new JsonObjectRequest(Request.Method.POST, url, JSONBodyParam,
+                    response -> {
+                        //do something
+                        String ResponseCode ;
+                        String ResponseDescription;
+                        try {
+                            ResponseCode = response.getString("responseCode");
+                            ResponseDescription = response.getString("responseDescription");
+                            if (ResponseCode.equalsIgnoreCase("00")) {
+                                savedData.setRegisteredUser(SettingsActivity.this, userName.getText().toString() );
+                            }
+                            else
+                            {
+                                Toast.makeText(SettingsActivity.this,"Error : ".concat(ResponseDescription), Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            //e.printStackTrace();
+                            Toast.makeText(SettingsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    },
+                    error -> Toast.makeText(SettingsActivity.this,error.toString() , Toast.LENGTH_LONG).show()
+            )
+            {
+                @Override
+                public Map<String, String> getHeaders()  {
+                    HashMap<String, String> headers = new HashMap<>();
+                    headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(SettingsActivity.this)));
+                    return headers;
+                }
+            };
+            requestQueue.add(objectRequest);
+        }catch (Exception e){
+            Toast.makeText(SettingsActivity.this,e.toString() , Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String getAndroidId() {
+        return Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 }

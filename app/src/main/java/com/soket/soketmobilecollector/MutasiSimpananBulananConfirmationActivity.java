@@ -45,6 +45,8 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
     private ArrayAdapter<String> adNasabah;
     private boolean IsUsingAutoCompleteID_SimpananBulanan;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
 
         //cek apa keaddan login apa tidak
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         //private String currCapem;
         //private String currKolektor;
         //String currUser = currPreference.getLoggedInUser(this);
@@ -219,6 +221,8 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiSimpananBulananConfirmationActivity.this)));
+
                     return headers;
                 }
             };

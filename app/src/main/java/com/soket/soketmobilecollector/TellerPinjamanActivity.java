@@ -59,6 +59,8 @@ public class TellerPinjamanActivity extends AppCompatActivity {
 
     private ProgressDialog dialog;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +99,7 @@ public class TellerPinjamanActivity extends AppCompatActivity {
 
         TextView txtInstitutionNameSetoranTunai =  findViewById(R.id.textViewinstitutionName_TellerPinjaman);
 
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         currUser= currPreference.getLoggedInUser(this);
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
@@ -467,6 +469,8 @@ public class TellerPinjamanActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(TellerPinjamanActivity.this)));
+
                     return headers;
                 }
             };

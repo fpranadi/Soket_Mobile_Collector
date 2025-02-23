@@ -50,7 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
         android:fontFamily="@font/hind_light"
         android:text="@string/pilihkolektor"
@@ -69,7 +69,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
         android:fontFamily="@font/hind_light"
         android:text="@string/input_kode_institusi"
@@ -101,6 +101,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spKolektor"
         tools:ignore="TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/editTextUserYangAkanLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:fontFamily="@font/hind_light"
+        android:hint="@string/UserYangAkanLogin"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textColorHint="#FFEB3B"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spCapem"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/btnSimpan"
@@ -213,11 +234,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spCapem">
+        app:layout_constraintTop_toBottomOf="@id/editTextUserYangAkanLogin">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtBTName"

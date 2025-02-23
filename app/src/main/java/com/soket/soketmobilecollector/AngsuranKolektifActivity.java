@@ -338,6 +338,7 @@ public class AngsuranKolektifActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(AngsuranKolektifActivity.this)));
                     return headers;
                 }
             };
@@ -454,7 +455,7 @@ public class AngsuranKolektifActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    //headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(PostingAngsuranKolektifActivity.this)));
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(AngsuranKolektifActivity.this)));
 
                     return headers;
                 }

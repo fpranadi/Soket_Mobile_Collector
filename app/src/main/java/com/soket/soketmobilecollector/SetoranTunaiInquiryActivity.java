@@ -52,6 +52,8 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
 
     private String NoTabungan;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
         ImageButton btnScanBarcode =  findViewById(R.id.imageButton_ScanBarcode);
 
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
         TabIDMask= currPreference.getIDMaskSimpanan(this);
@@ -271,6 +273,8 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(SetoranTunaiInquiryActivity.this)));
+
                     return headers;
                 }
             };

@@ -44,6 +44,8 @@ public class MutasiPinjamanConfirmationMainActivity extends AppCompatActivity {
     private ArrayAdapter<String> adNasabah;
     private boolean IsUsingAutoCompleteID_Pinjaman;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +58,7 @@ public class MutasiPinjamanConfirmationMainActivity extends AppCompatActivity {
         KreditID1=findViewById(R.id.autoCompleteTextViewMutasiPinjaman) ;
 
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         boolean currLoggedInStatus = currPreference.getLoggedInStatus(this);
 
         TabIDMask= currPreference.getIDMaskPinjaman(this) ;
@@ -212,6 +214,8 @@ public class MutasiPinjamanConfirmationMainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiPinjamanConfirmationMainActivity.this)));
+
                     return headers;
                 }
             };
@@ -270,6 +274,8 @@ public class MutasiPinjamanConfirmationMainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiPinjamanConfirmationMainActivity.this)));
+
                     return headers;
                 }
             };

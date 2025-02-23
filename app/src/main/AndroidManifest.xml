@@ -56,9 +56,6 @@
             android:name=".AngsuranKolektifActivity"
             android:exported="false" />
         <activity
-            android:name=".InquiryAngsuranKolektifActivity"
-            android:exported="false" />
-        <activity
             android:name=".TellerPinjamanPostedActivity"
             android:exported="false" />
         <activity

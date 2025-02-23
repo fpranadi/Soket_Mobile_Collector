@@ -46,6 +46,8 @@ public class MutasiTabunganConfirmationActivity extends AppCompatActivity {
 
     private ProgressDialog dialog;
 
+    private clsPreference currPreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,7 @@ public class MutasiTabunganConfirmationActivity extends AppCompatActivity {
 
         //cek apa keaddan login apa tidak
         //for saved data
-        clsPreference currPreference = new clsPreference();
+        currPreference = new clsPreference();
         //private String currCapem;
         //private String currKolektor;
         //String currUser = currPreference.getLoggedInUser(this);
@@ -173,14 +175,14 @@ public class MutasiTabunganConfirmationActivity extends AppCompatActivity {
             postparams.put("txtNorek", TabID.getText().toString());
             //clsGenerateSHA hash256 = new clsGenerateSHA();
             postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat("tabungan").concat(TabID.getText().toString()).concat(hashKey),true));
-            sendPostForValidateLogin(urlAPI.concat("/inforekening") , postparams);
+            sendPostForgetAccountInformation(urlAPI.concat("/inforekening") , postparams);
             dialog.setProgress(50);
         } catch (JSONException e) {
             Toast.makeText(MutasiTabunganConfirmationActivity.this,e.toString() , Toast.LENGTH_LONG).show();
         }
     }
 
-    private void sendPostForValidateLogin(String url, JSONObject JSONBodyParam)  {
+    private void sendPostForgetAccountInformation(String url, JSONObject JSONBodyParam)  {
         try{
             RequestQueue requestQueue= Volley.newRequestQueue(this);
             JsonObjectRequest objectRequest=new JsonObjectRequest(Request.Method.POST, url, JSONBodyParam,
@@ -233,6 +235,8 @@ public class MutasiTabunganConfirmationActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiTabunganConfirmationActivity.this)));
+
                     return headers;
                 }
             };
@@ -287,7 +291,7 @@ public class MutasiTabunganConfirmationActivity extends AppCompatActivity {
                                 Toast.makeText(MutasiTabunganConfirmationActivity.this,ResponseDescription, Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(MutasiTabunganConfirmationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -298,6 +302,7 @@ public class MutasiTabunganConfirmationActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiTabunganConfirmationActivity.this)));
                     return headers;
                 }
             };

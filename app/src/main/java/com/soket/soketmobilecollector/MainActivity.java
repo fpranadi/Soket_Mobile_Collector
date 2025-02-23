@@ -2,6 +2,7 @@ package com.soket.soketmobilecollector;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.InputType;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     public Boolean IsUsingAutoCompleteID;
 
+    private Boolean  verifyIMEI;
+
     private String IDMaskSimpanan ;
     private String IDMaskPinjaman ;
     private String IDMaskSimpananBulanan ;
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         savedCapemID = savedData.getRegisteredCapem(this);
         savedKolektorID =savedData.getRegisteredKolektor(this);
         savedData.clearLoggedInUser(this);
+        userName.setText(savedData.getRegisteredUser(this));
 
         institutionCode= savedData.getRegisteredInstitutionCode(this);
 
@@ -121,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         fillCapem();
 
         //setfocus di login
-        userName.requestFocus();
+        userPassword.requestFocus();
 
         btnLogin.setOnClickListener(view -> validateLogin(userName.getText().toString(), userPassword.getText().toString()));
 
@@ -131,14 +135,14 @@ public class MainActivity extends AppCompatActivity {
             // Set up the input
             final EditText input = new EditText(MainActivity.this);
             // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-            input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            input.setInputType( InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
 
             builder.setView(input);
             // Set up the buttons
             builder.setPositiveButton("OK", (dialog, which) -> {
                 dialog.dismiss();
                 m_Text = input.getText().toString();
-                if (m_Text.equals("1976"))
+                if (m_Text.equals("B4l14yu4pp"))
                 {
                     Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                     startActivity(intent);
@@ -165,9 +169,10 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
+                //untuk user account di
                 if( pUserName.equals("fpranadi") && pPassword.equals("cemapanj"))
                 {
-                    institutionCode="989006";
+                    institutionCode="989000";
                     savedData.setRegisteredInstitution(this, institutionCode,"KSP Saduarsa");
                     savedData.setRegisteredCapem(this,"KANTOR" );
                     savedData.setRegisteredKolektor(this,"FP" );
@@ -191,7 +196,16 @@ public class MainActivity extends AppCompatActivity {
                 postparams.put("InstitutionCode", institutionCode);
                 postparams.put("txtUserName", pUserName);
                 postparams.put("txtPassword", pPassword);
-                postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat(pUserName).concat(pPassword).concat(hashKey),true));
+                if (verifyIMEI)
+                {
+                    //hashkey nya tambahkan andoridid nya, yang di simpan saat aktivasi awal/ tentukan institution id nya
+                    String androidid = getAndroidId();
+                    postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat(pUserName).concat(pPassword).concat(hashKey).concat(androidid),true));
+                }
+                else
+                {
+                    postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat(pUserName).concat(pPassword).concat(hashKey),true));
+                }
                 sendPostForValidateLogin(urlAPI.concat("/login") , postparams);
             }
             else
@@ -215,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                             ResponseCode = response.getString("responseCode");
                             ResponseDescription = response.getString("responseDescription");
                             if (ResponseCode.equalsIgnoreCase("00")) {
-                                savedData.setLoggedInUser(MainActivity.this,userName.getText().toString() );
+                                savedData.setLoggedInUser(MainActivity.this,userName.getText().toString(), response.getString("accessToken") );
                                 savedData.setLoggedInStatus(MainActivity.this,true );
                                 userName.setText("");
                                 userPassword.setText("");
@@ -255,6 +269,8 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
+
                     return headers;
                 }
             };
@@ -321,6 +337,8 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
+
                     return headers;
                 }
             };
@@ -386,6 +404,8 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
+
                     return headers;
                 }
             };
@@ -449,7 +469,9 @@ public class MainActivity extends AppCompatActivity {
                                 IDMaskSimpananBerjangka= response.getString("idMaskSimpananBerjangka");
 
                                 IsUsingAutoCompleteID=Boolean.parseBoolean(response.getString("isInputIDAutoComplete"));
+                                IsUsingAutoCompleteID=Boolean.parseBoolean(response.getString("isInputIDAutoComplete"));
 
+                                verifyIMEI=Boolean.parseBoolean(response.getString("verifyIMEI"));
                             }
                             else
                             {
@@ -473,6 +495,7 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
                     return headers;
                 }
             };
@@ -480,6 +503,10 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(MainActivity.this,e.toString() , Toast.LENGTH_LONG).show();
         }
+    }
+
+    public String getAndroidId() {
+        return Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     //for killed from other activity
