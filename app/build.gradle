@@ -7,11 +7,11 @@ android {
         applicationId "com.soket.soketmobilecollector"
         minSdkVersion 24
         targetSdk 35
-        versionCode 33
-        versionName '33'
+        versionCode 34
+        versionName '34'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionNameSuffix '20250222'
+        versionNameSuffix '20250224'
     }
 
     buildTypes {

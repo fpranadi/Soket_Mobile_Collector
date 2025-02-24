@@ -210,7 +210,7 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
                                 Toast.makeText(MutasiSimpananBulananConfirmationActivity.this,ResponseDescription, Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(MutasiSimpananBulananConfirmationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -271,7 +271,6 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
                                 Toast.makeText(MutasiSimpananBulananConfirmationActivity.this,ResponseDescription, Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
                             Toast.makeText(MutasiSimpananBulananConfirmationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
@@ -282,6 +281,7 @@ public class MutasiSimpananBulananConfirmationActivity extends AppCompatActivity
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(MutasiSimpananBulananConfirmationActivity.this)));
                     return headers;
                 }
             };

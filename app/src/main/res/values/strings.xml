@@ -34,7 +34,7 @@
     <string name="login">Login</string>
     <string name="username">User Name</string>
     <string name="password">Password</string>
-    <string name="courtessy">Developed by @fjpranadi - BaliAyuApp</string>
+    <string name="courtessy"> </string>
     <string name="btname">Bluetooth Device Name</string>
     <string name="btaddress">Bluetooth Device Address</string>
     <string name="input_kode_institusi">Input Kode Institusi</string>

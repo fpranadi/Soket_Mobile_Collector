@@ -257,7 +257,7 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
                             dialog.setProgress(100);
 
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             dialog.setProgress(100);
                             Toast.makeText(SetoranTunaiInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -339,6 +339,8 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
                 public Map<String, String> getHeaders() {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
+                    headers.put("Authorization", "Bearer ".concat(currPreference.getAccessToken(SetoranTunaiInquiryActivity.this)));
+
                     return headers;
                 }
             };
