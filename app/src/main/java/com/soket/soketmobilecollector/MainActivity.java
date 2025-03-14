@@ -109,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
         hashKey=getString(R.string.hashKey);
         urlAPI=getString(R.string.webService );
 
+        verifyIMEI=false;
+
         //get institution name
         GetInstitutionName();
 
@@ -213,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Login Failed ..." , Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {
-            Toast.makeText(MainActivity.this,e.toString() , Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,"Koneksi Bermasalah ...", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -269,8 +271,7 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
-
+                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode, userName.getText().toString(), hashKey, getAndroidId()) ));
                     return headers;
                 }
             };
@@ -292,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
         catch (JSONException e)
         {
             //e.printStackTrace();
-            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Koneksi Terputus !", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -360,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
         catch (JSONException e)
         {
             //e.printStackTrace();
-            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Koneksi Terputus !", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -426,7 +427,7 @@ public class MainActivity extends AppCompatActivity {
         catch (JSONException e)
         {
             //e.printStackTrace();
-            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Koneksi Terputus !", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -505,7 +506,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public String getAndroidId() {
+    private String getAndroidId() {
         return Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 

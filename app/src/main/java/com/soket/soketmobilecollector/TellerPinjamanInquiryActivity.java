@@ -247,7 +247,7 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
                             }
                             dialog.setProgress(100);
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             dialog.setProgress(100);
                             Toast.makeText(TellerPinjamanInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -316,7 +316,7 @@ public class TellerPinjamanInquiryActivity extends AppCompatActivity {
                                 Toast.makeText(TellerPinjamanInquiryActivity.this,ResponseDescription, Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(TellerPinjamanInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },

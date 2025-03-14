@@ -320,15 +320,18 @@ public class SetoranTunaiActivity extends AppCompatActivity {
                             }
                             dialog.setProgress(100);
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             Toast.makeText(SetoranTunaiActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                             dialog.setProgress(100);
                         }
                         dialog.dismiss();
                     },
+
                     error -> {
-                        Toast.makeText(SetoranTunaiActivity.this,error.toString() , Toast.LENGTH_LONG).show();
                         dialog.dismiss();
+                        Toast.makeText(SetoranTunaiActivity.this,"Session telah habis, Mohon Login Kembali !!!" , Toast.LENGTH_LONG).show();
+                        finish();
+
                     }
             )
             {

@@ -329,8 +329,9 @@ public class PenarikanTunaiActivity extends AppCompatActivity {
                         dialog.dismiss();
                     },
                     error -> {
-                        Toast.makeText(PenarikanTunaiActivity.this,error.toString() , Toast.LENGTH_LONG).show();
                         dialog.dismiss();
+                        Toast.makeText(PenarikanTunaiActivity.this,"Session telah habis, Mohon Login Kembali !!!" , Toast.LENGTH_LONG).show();
+                        finish();
                     }
             )
             {

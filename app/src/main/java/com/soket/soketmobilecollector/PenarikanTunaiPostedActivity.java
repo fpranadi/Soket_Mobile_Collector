@@ -350,7 +350,12 @@ public class PenarikanTunaiPostedActivity extends AppCompatActivity {
                             Toast.makeText(PenarikanTunaiPostedActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
-                    error -> Toast.makeText(PenarikanTunaiPostedActivity.this,error.toString() , Toast.LENGTH_LONG).show()
+                    error -> {
+
+                        Toast.makeText(PenarikanTunaiPostedActivity.this,"Session telah habis, Mohon Login Kembali !!!" , Toast.LENGTH_LONG).show();
+                        finish();
+
+                    }
             )
             {
                 @Override

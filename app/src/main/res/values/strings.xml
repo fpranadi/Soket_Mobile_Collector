@@ -4,7 +4,6 @@
     <string name="webService">https://mteller.balisoket.com/api</string>
     <string name="hashKey">B4l1S0k3t</string>
 
-
     <string name="printerNbrCharacterPerLine">32</string>
     <string name="bluetooth_devices">Bluetooth Devices</string>
     <string name="connect">Connect</string>

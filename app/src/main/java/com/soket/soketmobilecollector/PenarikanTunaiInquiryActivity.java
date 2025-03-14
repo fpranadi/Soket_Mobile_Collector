@@ -260,15 +260,18 @@ public class PenarikanTunaiInquiryActivity extends AppCompatActivity {
                             }
                             dialog.setProgress(100);
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                             dialog.setProgress(100);
                             Toast.makeText(PenarikanTunaiInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                         dialog.dismiss();
                     },
+
                     error -> {
                         dialog.dismiss();
-                        Toast.makeText(PenarikanTunaiInquiryActivity.this,error.toString() , Toast.LENGTH_LONG).show();
+                        Toast.makeText(PenarikanTunaiInquiryActivity.this,"Session telah habis, Mohon Login Kembali !!!" , Toast.LENGTH_LONG).show();
+                        finish();
+
                     }
             )
             {

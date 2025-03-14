@@ -166,6 +166,7 @@
             android:fontFamily="@font/hind_light"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:maxLength="18"
             android:minHeight="48dp"
             android:paddingLeft="5sp"
             android:paddingTop="5sp"
@@ -194,6 +195,7 @@
             android:fontFamily="@font/hind_light"
             android:hint="@string/username"
             android:inputType="textPersonName"
+            android:maxLength="12"
             android:minHeight="48dp"
             android:paddingLeft="5sp"
             android:paddingTop="5sp"
@@ -220,6 +222,7 @@
             android:contentDescription="@string/setting"
             android:minWidth="48dp"
             android:minHeight="48dp"
+            android:visibility="invisible"
             app:srcCompat="@android:drawable/ic_menu_preferences" />
 
         <TextView

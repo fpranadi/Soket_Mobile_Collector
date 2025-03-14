@@ -332,7 +332,12 @@ public class SetoranTunaiInquiryActivity extends AppCompatActivity  {
                             Toast.makeText(SetoranTunaiInquiryActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     },
-                    error -> Toast.makeText(SetoranTunaiInquiryActivity.this,error.toString() , Toast.LENGTH_LONG).show()
+                    error -> {
+                        dialog.dismiss();
+                        Toast.makeText(SetoranTunaiInquiryActivity.this,"Session telah habis, Mohon Login Kembali !!!" , Toast.LENGTH_LONG).show();
+                        finish();
+
+                    }
             )
             {
                 @Override

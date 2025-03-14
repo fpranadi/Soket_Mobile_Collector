@@ -198,7 +198,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
                             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                             Toast.makeText(HomeActivity.this, "Bluetooth baru di-Enabled ...!", Toast.LENGTH_SHORT).show();
                         } catch (SecurityException ee) {
-                            Toast.makeText(HomeActivity.this, ee.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "Error on bluetooth security !", Toast.LENGTH_SHORT).show();
                         }
 
                     } else {
@@ -214,7 +214,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
                         mBluetoothAdapter.disable();
                     }
                 } catch (SecurityException ee1) {
-                    Toast.makeText(HomeActivity.this, ee1.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, "Error On bluettooth Security", Toast.LENGTH_SHORT).show();
                 }
 
                 stat.setText("");
@@ -242,7 +242,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
                 }
             }
         } catch (SecurityException Err) {
-            Toast.makeText(HomeActivity.this, Err.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Permission Bluetooth bermasalah !", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -299,7 +299,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
                         Thread mBlutoothConnectThread = new Thread(this);
                         mBlutoothConnectThread.start();
                     } catch (SecurityException err) {
-                        Toast.makeText(HomeActivity.this, err.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, "Error : Security Bluetooth ...", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
@@ -351,7 +351,7 @@ public class HomeActivity extends AppCompatActivity implements Runnable {
             Log.d(TAG, "CouldNotConnectToSocket", eConnectException);
             Toast.makeText(HomeActivity.this, "CouldNotConnectToSocket", Toast.LENGTH_SHORT).show();
         } catch (SecurityException Err1)  {
-            Toast.makeText(HomeActivity.this, Err1.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Error on Security Bluetooth ..", Toast.LENGTH_SHORT).show();
         }
         finally {
             //langsung di close aja... yang disini buat tes aja
