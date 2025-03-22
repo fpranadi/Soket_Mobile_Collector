@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
     //inputdialog
     private String m_Text ;
 
+    private String androidId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
         capem.setAdapter(adCapem);
         fillCapem();
 
+        androidId = getAndroidId();
+
         //setfocus di login
         userPassword.requestFocus();
 
@@ -144,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setPositiveButton("OK", (dialog, which) -> {
                 dialog.dismiss();
                 m_Text = input.getText().toString();
-                if (m_Text.equals("B4l14yu4pp"))
+                if (m_Text.equals("B4l14yuCr4ft"))
                 {
                     Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                     startActivity(intent);
@@ -201,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
                 if (verifyIMEI)
                 {
                     //hashkey nya tambahkan andoridid nya, yang di simpan saat aktivasi awal/ tentukan institution id nya
-                    String androidid = getAndroidId();
-                    postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat(pUserName).concat(pPassword).concat(hashKey).concat(androidid),true));
+                    //String androidid = getAndroidId();
+                    postparams.put("hashCode", clsGenerateSHA.hex256(institutionCode.concat(pUserName).concat(pPassword).concat(hashKey).concat(androidId),true));
                 }
                 else
                 {
@@ -271,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode, userName.getText().toString(), hashKey, getAndroidId()) ));
+                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode, userName.getText().toString(), hashKey, androidId) ));
                     return headers;
                 }
             };
@@ -338,8 +342,8 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
-
+                    //headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
+                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode,institutionCode, hashKey, androidId) ));
                     return headers;
                 }
             };
@@ -405,8 +409,8 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
-
+                    //headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
+                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode,institutionCode, hashKey, androidId) ));
                     return headers;
                 }
             };
@@ -496,7 +500,8 @@ public class MainActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
+                    //headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(MainActivity.this)));
+                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode,institutionCode, hashKey, androidId) ));
                     return headers;
                 }
             };

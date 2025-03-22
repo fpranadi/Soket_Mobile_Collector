@@ -222,7 +222,7 @@
             android:contentDescription="@string/setting"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:srcCompat="@android:drawable/ic_menu_preferences" />
 
         <TextView

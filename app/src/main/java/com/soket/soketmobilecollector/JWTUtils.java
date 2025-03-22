@@ -10,7 +10,7 @@ import com.auth0.jwt.interfaces.JWTVerifier;
 
 public class JWTUtils {
     private static final String SECRET_KEY = "db35Isj+BXE9NZDy0t8W3TcNekrF+2d/S0k3tM0b1l3T3ll3r280220258abWvB1GlOgJuQZdcF2Luqm/hccMw--"; // Ganti dengan secret key yang aman
-    //private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 jam
+    //private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 jam utk dev
     private static final long EXPIRATION_TIME = 1000 * 15 ; // 15 detik
 
     public static String generateToken(String institutionCode, String identity, String hashKey, String AndroidId) {

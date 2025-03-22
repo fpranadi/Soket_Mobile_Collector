@@ -239,7 +239,8 @@ public class SettingsActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(SettingsActivity.this)));
+                    //headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(SettingsActivity.this)));
+                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode,institutionCode, hashKey, getAndroidId()) ));
                     return headers;
                 }
             };
@@ -305,8 +306,8 @@ public class SettingsActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders()  {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(SettingsActivity.this)));
-
+                    //headers.put("Authorization", "Bearer ".concat(savedData.getAccessToken(SettingsActivity.this)));
+                    headers.put("Authorization", "Bearer ".concat(JWTUtils.generateToken(institutionCode,institutionCode, hashKey, getAndroidId()) ));
                     return headers;
                 }
             };
